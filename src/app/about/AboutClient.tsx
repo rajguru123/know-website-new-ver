@@ -130,13 +130,23 @@ export default function AboutClient() {
           <div className="sec-head rv"><div className="sl fm" style={{ marginBottom: 16 }}>Leadership</div><h2 className="fd">The people behind Knowx</h2></div>
           <div className="leaders">
             {[
-              { name: 'Bhimsen', title: 'Founder & CEO', init: 'B', type: 'founder', desc: 'An engineer with dual expertise in Electronics and Computer Science, Bhimsen has over 20 years of experience in embedded systems design and technology training. Before founding Knowx in 2005, he built and ran a computer manufacturing and certification training company. He leads technical strategy, client engagements, and the Product Development Fellowship.' },
-              { name: 'Nageshwar Rao C', title: 'Director — Consulting', init: 'N', type: 'advisor', desc: 'Director at Asmaitha, a Bangalore-based systems integrator specializing in product engineering of wireless infrastructure and CPE solutions including USB dongles, WiMax-to-WiFi routers, and broadband access devices.' },
-              { name: 'Anantha Somayaji', title: 'Director — Consulting', init: 'A', type: 'advisor', desc: 'Co-Founder & CEO at Venturebiz Promotions Pvt Ltd. Specializes in building purpose-driven digital solutions for hyperlocal businesses. Brings strategic advisory experience in digital transformation and market scaling.' },
+              { name: 'Bhimsen', title: 'Founder & CEO', img: '/images/bhimsen-founder-ceo-knowx.png', type: 'founder', desc: 'An engineer with dual expertise in Electronics and Computer Science, Bhimsen has over 20 years of experience in embedded systems design and technology training. Before founding Knowx in 2005, he built and ran a computer manufacturing and certification training company. He leads technical strategy, client engagements, and the Product Development Fellowship.' },
+              { name: 'Nageshwar Rao C', title: 'Director — Consulting', img: '/images/nageshwar-rao-director-knowx.png', type: 'advisor', desc: 'Director at Asmaitha, a Bangalore-based systems integrator specializing in product engineering of wireless infrastructure and CPE solutions including USB dongles, WiMax-to-WiFi routers, and broadband access devices.' },
+              { name: 'Anantha Somayaji', title: 'Director — Consulting', img: '/images/anantha-somayaji-director-knowx.png', type: 'advisor', desc: 'Co-Founder & CEO at Venturebiz Promotions Pvt Ltd. Specializes in building purpose-driven digital solutions for hyperlocal businesses. Brings strategic advisory experience in digital transformation and market scaling.' },
             ].map((l, i) => (
               <div className={`leader ${l.type} rv ${i > 0 ? `rv-d${i}` : ''}`} key={l.name}>
                 <div className="leader-header">
-                  <div className="leader-av fd">{l.init}</div>
+                  <img
+                    src={l.img}
+                    alt={`${l.name} — ${l.title} at Knowx Innovations`}
+                    style={{
+                      width: 80, height: 80, borderRadius: '50%',
+                      objectFit: 'cover', objectPosition: 'top center',
+                      margin: '0 auto 18px',
+                      display: 'block',
+                      border: l.type === 'founder' ? '3px solid var(--ac)' : '3px solid var(--n300)',
+                    }}
+                  />
                   <h3 className="fd">{l.name}</h3>
                   <span className="leader-title fm">{l.title}</span>
                 </div>
@@ -198,7 +208,7 @@ export default function AboutClient() {
             <div style={{ position: 'absolute', bottom: -40, left: -40, width: 240, height: 240, background: 'rgba(0,180,216,.1)', borderRadius: '50%', filter: 'blur(80px)' }} />
             <div style={{ position: 'relative' }}>
               <h2 className="fd">Ready to work with us?</h2>
-              <p>Whether you need a product engineered, a team augmented, or engineers trained — let us talk.</p>
+              <p style={{ color: 'var(--n300)' }}>Whether you need a product engineered, a team augmented, or engineers trained — let us talk.</p>
               <div className="cta-btns">
                 <button className="btn bp lg" onClick={openPopup}>
                   Book a Consultation
