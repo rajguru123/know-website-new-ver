@@ -25,19 +25,11 @@ function useCarousel(totalItems: number, id: string) {
 }
 
 export default function HomeClient() {
-  /* Carousels */
   const slideCS = useCarousel(7, 'cs-track');
   const slidePR = useCarousel(8, 'pr-track');
-
-  /* FAQ */
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const toggleFaq = (i: number) => setOpenFaq(openFaq === i ? null : i);
-
-  /* Popup opener (from parent via window) */
-  const openPopup = () => {
-    const evt = new CustomEvent('openPopup');
-    window.dispatchEvent(evt);
-  };
+  const openPopup = () => window.dispatchEvent(new CustomEvent('openPopup'));
 
   return (
     <>
@@ -81,8 +73,7 @@ export default function HomeClient() {
       {/* ═══ STATS STRIP ═══ */}
       <div className="sst">
         <div className="sst-in">
-          <div><div className="ssv fd"><AnimatedCounter target={20} suffix="+" />
-          </div><div className="ssl">Years Experience</div></div>
+          <div><div className="ssv fd"><AnimatedCounter target={20} suffix="+" /></div><div className="ssl">Years Experience</div></div>
           <div><div className="ssv fd"><AnimatedCounter target={150} suffix="+" /></div><div className="ssl">Projects Delivered</div></div>
           <div><div className="ssv fd"><AnimatedCounter target={50} suffix="+" /></div><div className="ssl">Clients Served</div></div>
           <div><div className="ssv fd"><AnimatedCounter target={10} suffix="+" /></div><div className="ssl">Industry Domains</div></div>
@@ -144,7 +135,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ═══ PROCESS ═══ */}
+      {/* ═══ PROCESS — RESTORED SVG ILLUSTRATIONS ═══ */}
       <section className="sec bg-s">
         <div className="sec-in">
           <div className="sh c rv">
@@ -153,22 +144,84 @@ export default function HomeClient() {
             <p>Our Design-to-Manufacturing (D2M) process ensures nothing falls through the cracks.</p>
           </div>
           <div className="pg">
-            {[
-              { n: '01', title: 'Consult', desc: 'We study your requirements, define specifications, and create a technical roadmap with clear milestones.', bg: 'linear-gradient(135deg,#E6F0FF,#D0E4FF)' },
-              { n: '02', title: 'Design', desc: 'Schematic design, firmware architecture, PCB layout, and mechanical integration — all reviewed with you.', bg: 'linear-gradient(135deg,#E0F7F0,#C5F0E3)' },
-              { n: '03', title: 'Prototype', desc: 'Rapid prototyping, board bring-up, firmware flashing, testing, and iterative refinement until it works perfectly.', bg: 'linear-gradient(135deg,#E6F0FF,#D0E4FF)' },
-              { n: '04', title: 'Manufacture', desc: 'DFM optimization, compliance testing (BIS, CE, IEC), production files, and manufacturing support.', bg: 'linear-gradient(135deg,#E0F7F0,#C5F0E3)' },
-            ].map((p, i) => (
-              <div className={`pc rv ${i > 0 ? `rv-d${i}` : ''}`} key={p.n}>
-                <div className="pc-il" style={{ background: p.bg }}>
-                  {/* Safari-safe: simple colored box instead of nested SVG */}
-                  <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.4, fontSize: 48, fontWeight: 800, color: i % 2 === 0 ? 'var(--ac)' : 'var(--tl)' }} className="fd">{p.n}</div>
-                </div>
-                <div className="pc-n fd fm">{p.n}</div>
-                <h3 className="fd">{p.title}</h3>
-                <p>{p.desc}</p>
+            {/* 01 — Consult */}
+            <div className="pc rv">
+              <div className="pc-il" style={{ background: 'linear-gradient(135deg,#E6F0FF,#D0E4FF)' }}>
+                <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                  <rect x="55" y="14" width="90" height="60" rx="4" fill="#fff" stroke="#0066FF" strokeWidth="1.5"/>
+                  <line x1="68" y1="30" x2="130" y2="30" stroke="#BCCCDC" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="68" y1="40" x2="118" y2="40" stroke="#BCCCDC" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="68" y1="50" x2="105" y2="50" stroke="#0066FF" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="68" y1="60" x2="95" y2="60" stroke="#BCCCDC" strokeWidth="2" strokeLinecap="round"/>
+                  <line x1="100" y1="74" x2="100" y2="90" stroke="#627D98" strokeWidth="2"/>
+                  <line x1="80" y1="90" x2="120" y2="90" stroke="#627D98" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="38" cy="75" r="7" fill="#0066FF" opacity=".2"/>
+                  <circle cx="38" cy="65" r="5" fill="#0066FF" opacity=".3"/>
+                  <circle cx="162" cy="75" r="7" fill="#0066FF" opacity=".2"/>
+                  <circle cx="162" cy="65" r="5" fill="#0066FF" opacity=".3"/>
+                </svg>
               </div>
-            ))}
+              <div className="pc-n fd fm">01</div><h3 className="fd">Consult</h3><p>We study your requirements, define specifications, and create a technical roadmap with clear milestones.</p>
+            </div>
+
+            {/* 02 — Design */}
+            <div className="pc rv rv-d1">
+              <div className="pc-il" style={{ background: 'linear-gradient(135deg,#E0F7F0,#C5F0E3)' }}>
+                <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                  <rect x="35" y="16" width="130" height="88" rx="6" fill="#fff" stroke="#00B4D8" strokeWidth="1.5"/>
+                  <rect x="82" y="46" width="36" height="28" rx="3" fill="none" stroke="#00B4D8" strokeWidth="1.5"/>
+                  <rect x="90" y="54" width="20" height="12" rx="1" fill="#00B4D8" opacity=".15"/>
+                  <line x1="90" y1="46" x2="90" y2="38" stroke="#00B4D8" strokeWidth="1.2"/>
+                  <line x1="100" y1="46" x2="100" y2="38" stroke="#00B4D8" strokeWidth="1.2"/>
+                  <line x1="110" y1="46" x2="110" y2="38" stroke="#00B4D8" strokeWidth="1.2"/>
+                  <line x1="90" y1="74" x2="90" y2="82" stroke="#00B4D8" strokeWidth="1.2"/>
+                  <line x1="100" y1="74" x2="100" y2="82" stroke="#00B4D8" strokeWidth="1.2"/>
+                  <line x1="110" y1="74" x2="110" y2="82" stroke="#00B4D8" strokeWidth="1.2"/>
+                  <path d="M82 55L60 55L60 35L50 35" stroke="#00B4D8" strokeWidth="1.2" fill="none"/>
+                  <path d="M118 65L140 65L140 85L155 85" stroke="#00B4D8" strokeWidth="1.2" fill="none"/>
+                  <circle cx="50" cy="35" r="3" fill="#00B4D8" opacity=".3"/>
+                  <circle cx="155" cy="85" r="3" fill="#00B4D8" opacity=".3"/>
+                </svg>
+              </div>
+              <div className="pc-n fd fm">02</div><h3 className="fd">Design</h3><p>Schematic design, firmware architecture, PCB layout, and mechanical integration — all reviewed with you.</p>
+            </div>
+
+            {/* 03 — Prototype */}
+            <div className="pc rv rv-d2">
+              <div className="pc-il" style={{ background: 'linear-gradient(135deg,#E6F0FF,#D0E4FF)' }}>
+                <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                  <rect x="40" y="25" width="120" height="75" rx="6" fill="rgba(11,110,79,.12)" stroke="#0066FF" strokeWidth="1.5"/>
+                  <path d="M55 50H80V65H110" stroke="#0066FF" strokeWidth="1.5" fill="none" opacity=".5"/>
+                  <rect x="58" y="42" width="18" height="12" rx="2" fill="#0066FF" opacity=".25"/>
+                  <rect x="105" y="55" width="22" height="14" rx="2" fill="#0066FF" opacity=".2"/>
+                  <circle cx="145" cy="45" r="6" fill="none" stroke="#0066FF" strokeWidth="1.2"/>
+                  <circle cx="145" cy="45" r="2" fill="#0066FF" opacity=".4"/>
+                  <circle cx="55" cy="35" r="3" fill="#10B981" opacity=".6"/>
+                  <circle cx="65" cy="35" r="3" fill="#F59E0B" opacity=".5"/>
+                </svg>
+              </div>
+              <div className="pc-n fd fm">03</div><h3 className="fd">Prototype</h3><p>Rapid prototyping, board bring-up, firmware flashing, testing, and iterative refinement until it works perfectly.</p>
+            </div>
+
+            {/* 04 — Manufacture */}
+            <div className="pc rv rv-d3">
+              <div className="pc-il" style={{ background: 'linear-gradient(135deg,#E0F7F0,#C5F0E3)' }}>
+                <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                  <rect x="30" y="40" width="60" height="55" rx="3" fill="#fff" stroke="#0096B7" strokeWidth="1.5"/>
+                  <rect x="40" y="50" width="12" height="12" rx="1" fill="#00B4D8" opacity=".15" stroke="#00B4D8" strokeWidth=".8"/>
+                  <rect x="60" y="50" width="12" height="12" rx="1" fill="#00B4D8" opacity=".15" stroke="#00B4D8" strokeWidth=".8"/>
+                  <rect x="48" y="72" width="16" height="23" rx="2" fill="#00B4D8" opacity=".12" stroke="#00B4D8" strokeWidth="1"/>
+                  <line x1="95" y1="88" x2="175" y2="88" stroke="#627D98" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="100" cy="88" r="4" fill="none" stroke="#627D98" strokeWidth="1.2"/>
+                  <circle cx="170" cy="88" r="4" fill="none" stroke="#627D98" strokeWidth="1.2"/>
+                  <rect x="115" y="78" width="14" height="10" rx="2" fill="#00B4D8" opacity=".25" stroke="#00B4D8" strokeWidth=".8"/>
+                  <rect x="138" y="78" width="14" height="10" rx="2" fill="#00B4D8" opacity=".25" stroke="#00B4D8" strokeWidth=".8"/>
+                  <circle cx="160" cy="50" r="14" fill="#10B981" opacity=".12" stroke="#10B981" strokeWidth="1.2"/>
+                  <path d="M153 50L158 55L168 44" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div className="pc-n fd fm">04</div><h3 className="fd">Manufacture</h3><p>DFM optimization, compliance testing (BIS, CE, IEC), production files, and manufacturing support.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -199,7 +252,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ═══ CASE STUDIES CAROUSEL ═══ */}
+      {/* ═══ CASE STUDIES CAROUSEL — WITH REAL IMAGES ═══ */}
       <section className="sec bg-s" id="case-studies">
         <div className="sec-in">
           <div className="shr">
@@ -213,17 +266,22 @@ export default function HomeClient() {
           <div className="crl rv" id="cs-crl">
             <div className="crl-track" id="cs-track">
               {[
-                { badge: 'Industrial IoT', badgeCls: 'bl', title: 'Remote Data Acquisition System', result: '40% reduction in downtime', tags: ['IoT', 'Cloud', 'GPRS'], bg: 'linear-gradient(135deg,#0B1A30,#1A3355)' },
-                { badge: 'Automotive', badgeCls: 'tl', title: 'GPS Vehicle Tracking & Telematics', result: '25% reduction in fuel costs', tags: ['GPS', 'CAN Bus', 'Dashboard'], bg: 'linear-gradient(135deg,#082B3A,#0B3D52)' },
-                { badge: 'AgriTech', badgeCls: 'gn', title: 'Smart Agriculture Monitoring', result: '30% increase in crop yield', tags: ['Sensors', 'Wi-Fi Mesh', 'IoT'], bg: 'linear-gradient(135deg,#0A2218,#133A2A)' },
-                { badge: 'Automotive', badgeCls: 'bl', title: 'Vehicle Health Diagnostic OBD', result: 'Edge AI fault prediction', tags: ['OBD-II', 'CAN', 'Edge AI'], bg: 'linear-gradient(135deg,#1A1A2E,#16213E)' },
-                { badge: 'Logistics', badgeCls: 'tl', title: 'Asset Tracking System', result: 'BLE + GPS multi-tag tracking', tags: ['BLE', 'GPS', 'Cloud'], bg: 'linear-gradient(135deg,#0E1F38,#1A3355)' },
-                { badge: 'Smart City', badgeCls: 'tl', title: 'Smart Water Quality Monitor', result: 'AI contamination alerts', tags: ['pH Sensor', 'Turbidity', 'AI'], bg: 'linear-gradient(135deg,#082B3A,#0B3D52)' },
-                { badge: 'Industrial', badgeCls: 'nv', title: 'Predictive Maintenance System', result: 'AI detects failures early', tags: ['Vibration', 'Temp', 'AI'], bg: 'linear-gradient(135deg,#1A1A2E,#2D1B38)' },
+                { badge: 'Industrial IoT', badgeCls: 'bl', title: 'Remote Data Acquisition System', result: '40% reduction in downtime', tags: ['IoT', 'Cloud', 'GPRS'], img: '/images/remote-data-acquisition-system-iot.jpg', alt: 'IoT remote data acquisition system for industrial monitoring by Knowx Innovations' },
+                { badge: 'Automotive', badgeCls: 'tl', title: 'GPS Vehicle Tracking & Telematics', result: '25% reduction in fuel costs', tags: ['GPS', 'CAN Bus', 'Dashboard'], img: '/images/gps-vehicle-tracking-telematics-iot.png', alt: 'GPS vehicle tracking and telematics IoT system by Knowx Innovations' },
+                { badge: 'AgriTech', badgeCls: 'gn', title: 'Smart Agriculture Monitoring', result: '30% increase in crop yield', tags: ['Sensors', 'Wi-Fi Mesh', 'IoT'], img: '/images/smart-agriculture-monitoring-iot.jpg', alt: 'Smart agriculture IoT monitoring system for precision farming by Knowx Innovations' },
+                { badge: 'Automotive', badgeCls: 'bl', title: 'Vehicle Health Diagnostic OBD', result: 'Edge AI fault prediction', tags: ['OBD-II', 'CAN', 'Edge AI'], img: '/images/vehicle-health-diagnostics-obd.png', alt: 'Vehicle health diagnostics OBD system with Edge AI by Knowx Innovations' },
+                { badge: 'Logistics', badgeCls: 'tl', title: 'Asset Tracking System', result: 'BLE + GPS multi-tag tracking', tags: ['BLE', 'GPS', 'Cloud'], img: '/images/ble-asset-tracking-system.jpg', alt: 'BLE based asset tracking system for logistics by Knowx Innovations' },
+                { badge: 'Smart City', badgeCls: 'tl', title: 'Smart Water Quality Monitor', result: 'AI contamination alerts', tags: ['pH Sensor', 'Turbidity', 'AI'], img: '/images/iot-water-quality-monitoring-system.png', alt: 'IoT water quality monitoring system with AI alerts by Knowx Innovations' },
+                { badge: 'Industrial', badgeCls: 'nv', title: 'Predictive Maintenance System', result: 'AI detects failures early', tags: ['Vibration', 'Temp', 'AI'], img: '/images/iot-predictive-maintenance-system.png', alt: 'IoT predictive maintenance system for industry machines by Knowx Innovations' },
               ].map((cs) => (
                 <a href="#" className="cs" key={cs.title}>
-                  <div className="cs-img" style={{ background: cs.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,.3)', letterSpacing: '.08em', textTransform: 'uppercase' as const }} className="fm">{cs.badge}</span>
+                  <div className="cs-img" style={{ position: 'relative', overflow: 'hidden' }}>
+                    <img
+                      src={cs.img}
+                      alt={cs.alt}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      loading="lazy"
+                    />
                   </div>
                   <div className="cs-body">
                     <span className={`cs-bg ${cs.badgeCls} fm`}>{cs.badge}</span>
@@ -244,7 +302,7 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* ═══ PRODUCTS CAROUSEL ═══ */}
+      {/* ═══ PRODUCTS CAROUSEL — RESTORED SVG GRAPHICS ═══ */}
       <section className="sec" id="products">
         <div className="sec-in">
           <div className="shr">
@@ -257,25 +315,138 @@ export default function HomeClient() {
           </div>
           <div className="crl rv" id="pr-crl">
             <div className="crl-track" id="pr-track">
-              {[
-                { title: 'Remote Data Acquisition', desc: 'Cloud-based test & measurement with real-time monitoring.', tags: ['Cloud', 'Wireless', 'Real-time'], bg: 'linear-gradient(145deg,#0E1F38,#1A3355)' },
-                { title: 'GPS Vehicle Tracker', desc: 'Fleet tracking with geo-fencing & predictive routing.', tags: ['GPS', 'Geo-fence', 'Analytics'], bg: 'linear-gradient(145deg,#082B3A,#0B3D52)' },
-                { title: 'IoT Data Logger', desc: 'GPRS-enabled M2M data logger for industrial use.', tags: ['GPRS', 'M2M', 'Industrial'], bg: 'linear-gradient(145deg,#1A1A2E,#16213E)' },
-                { title: 'Smart Irrigation Controller', desc: 'Solar-powered soil monitoring & automated irrigation.', tags: ['Solar', 'Sensors', 'Automation'], bg: 'linear-gradient(145deg,#0A2218,#133A2A)' },
-                { title: 'EV Charging Controller', desc: 'OCPP-compliant smart charging with load management.', tags: ['OCPP', 'CAN', 'Smart Grid'], bg: 'linear-gradient(145deg,#0B1A30,#142D4E)' },
-                { title: 'Water Quality Monitor', desc: 'Multi-parameter testing with cloud alerts.', tags: ['pH', 'Turbidity', 'IoT'], bg: 'linear-gradient(145deg,#082B3A,#0B3D52)' },
-                { title: 'Vibration Analyzer', desc: 'FFT-based analysis for predictive maintenance.', tags: ['FFT', 'Edge AI', 'Industrial'], bg: 'linear-gradient(145deg,#1A1A2E,#2D1B38)' },
-                { title: 'BLE Asset Tag', desc: 'Low-power indoor tracking for warehouses.', tags: ['BLE 5.0', 'Low Power', 'Mesh'], bg: 'linear-gradient(145deg,#0E1F38,#1A3355)' },
-              ].map((pr) => (
-                <div className="prd" key={pr.title}>
-                  <div className="prd-img" style={{ background: pr.bg, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,.25)', letterSpacing: '.08em', textTransform: 'uppercase' as const }} className="fm">KNOWX</span>
-                  </div>
-                  <h3 className="fd">{pr.title}</h3>
-                  <p>{pr.desc}</p>
-                  <div className="at fm">{pr.tags.map((t) => <span key={t}>{t}</span>)}</div>
+              {/* Product 1 — Remote Data Acquisition */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#0E1F38,#1A3355)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <rect x="55" y="25" width="90" height="60" rx="6" fill="rgba(255,255,255,.06)" stroke="rgba(0,102,255,.4)" strokeWidth="1.2"/>
+                    <rect x="63" y="33" width="55" height="28" rx="3" fill="rgba(0,102,255,.1)" stroke="rgba(0,102,255,.3)" strokeWidth=".8"/>
+                    <path d="M68 52L78 46L88 50L98 40L108 44L113 38" stroke="#0066FF" strokeWidth="1.5" fill="none" opacity=".7"/>
+                    <circle cx="68" cy="72" r="3" fill="#10B981" opacity=".6"/><circle cx="80" cy="72" r="3" fill="#F59E0B" opacity=".5"/>
+                    <line x1="130" y1="25" x2="140" y2="10" stroke="rgba(255,255,255,.3)" strokeWidth="1.5" strokeLinecap="round"/>
+                    <circle cx="140" cy="8" r="2.5" fill="#0066FF" opacity=".6"/>
+                  </svg>
                 </div>
-              ))}
+                <h3 className="fd">Remote Data Acquisition</h3><p>Cloud-based test &amp; measurement with real-time monitoring.</p>
+                <div className="at fm"><span>Cloud</span><span>Wireless</span><span>Real-time</span></div>
+              </div>
+
+              {/* Product 2 — GPS Vehicle Tracker */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#082B3A,#0B3D52)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <path d="M25 90Q60 40 100 60Q140 80 175 30" stroke="rgba(0,180,216,.25)" strokeWidth="1.5" fill="none" strokeDasharray="5 4"/>
+                    <rect x="88" y="52" width="16" height="10" rx="3" fill="#00B4D8" opacity=".5"/>
+                    <circle cx="96" cy="46" r="12" fill="none" stroke="#00B4D8" strokeWidth=".8" opacity=".3"/>
+                    <path d="M148 35Q148 25 155 25Q162 25 162 35L155 45Z" fill="#F59E0B" opacity=".5"/>
+                  </svg>
+                </div>
+                <h3 className="fd">GPS Vehicle Tracker</h3><p>Fleet tracking with geo-fencing &amp; predictive routing.</p>
+                <div className="at fm"><span>GPS</span><span>Geo-fence</span><span>Analytics</span></div>
+              </div>
+
+              {/* Product 3 — IoT Data Logger */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#1A1A2E,#16213E)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <rect x="60" y="30" width="80" height="55" rx="5" fill="rgba(255,255,255,.05)" stroke="rgba(102,126,234,.35)" strokeWidth="1.2"/>
+                    <rect x="70" y="38" width="48" height="22" rx="2" fill="rgba(102,126,234,.08)"/>
+                    <rect x="74" y="48" width="6" height="8" rx="1" fill="rgba(102,126,234,.4)"/>
+                    <rect x="83" y="44" width="6" height="12" rx="1" fill="rgba(102,126,234,.5)"/>
+                    <rect x="92" y="46" width="6" height="10" rx="1" fill="rgba(102,126,234,.35)"/>
+                    <rect x="101" y="42" width="6" height="14" rx="1" fill="rgba(102,126,234,.6)"/>
+                    <circle cx="75" cy="72" r="2.5" fill="#10B981" opacity=".6"/><circle cx="84" cy="72" r="2.5" fill="#F59E0B" opacity=".5"/>
+                    <line x1="125" y1="30" x2="135" y2="15" stroke="rgba(255,255,255,.25)" strokeWidth="1.2" strokeLinecap="round"/>
+                  </svg>
+                </div>
+                <h3 className="fd">IoT Data Logger</h3><p>GPRS-enabled M2M data logger for industrial use.</p>
+                <div className="at fm"><span>GPRS</span><span>M2M</span><span>Industrial</span></div>
+              </div>
+
+              {/* Product 4 — Smart Irrigation */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#0A2218,#133A2A)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <path d="M40 110L40 50Q150 10 260 50L260 110Z" fill="rgba(16,185,129,.08)" stroke="rgba(16,185,129,.3)" strokeWidth="1" transform="scale(0.7) translate(15,15)"/>
+                    <circle cx="70" cy="65" r="8" fill="#10B981" opacity=".25"/>
+                    <line x1="70" y1="95" x2="70" y2="73" stroke="#10B981" strokeWidth="2"/>
+                    <circle cx="130" cy="60" r="10" fill="#10B981" opacity=".3"/>
+                    <line x1="130" y1="95" x2="130" y2="70" stroke="#10B981" strokeWidth="2"/>
+                    <rect x="90" y="75" width="12" height="16" rx="2" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.25)" strokeWidth=".8"/>
+                    <circle cx="96" cy="80" r="2" fill="#F59E0B" opacity=".7"/>
+                  </svg>
+                </div>
+                <h3 className="fd">Smart Irrigation Controller</h3><p>Solar-powered soil monitoring &amp; automated irrigation.</p>
+                <div className="at fm"><span>Solar</span><span>Sensors</span><span>Automation</span></div>
+              </div>
+
+              {/* Product 5 — EV Charging */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#0B1A30,#142D4E)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <rect x="60" y="20" width="80" height="80" rx="8" fill="rgba(255,255,255,.04)" stroke="rgba(0,102,255,.3)" strokeWidth="1"/>
+                    <path d="M95 40L85 65H100L90 90" stroke="#F59E0B" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="100" cy="60" r="30" fill="none" stroke="rgba(0,102,255,.15)" strokeWidth="1" strokeDasharray="4 4"/>
+                    <rect x="145" y="50" width="20" height="30" rx="3" fill="rgba(0,102,255,.1)" stroke="rgba(0,102,255,.25)" strokeWidth=".8"/>
+                    <rect x="150" y="58" width="10" height="4" rx="1" fill="#10B981" opacity=".5"/>
+                    <rect x="150" y="65" width="7" height="4" rx="1" fill="#F59E0B" opacity=".4"/>
+                  </svg>
+                </div>
+                <h3 className="fd">EV Charging Controller</h3><p>OCPP-compliant smart charging with load management.</p>
+                <div className="at fm"><span>OCPP</span><span>CAN</span><span>Smart Grid</span></div>
+              </div>
+
+              {/* Product 6 — Water Quality */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#082B3A,#0B3D52)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <path d="M40 120Q80 40 150 70Q220 100 260 30" stroke="rgba(0,180,216,.15)" strokeWidth="40" fill="none" strokeLinecap="round" transform="scale(0.72) translate(10,10)"/>
+                    <circle cx="80" cy="55" r="15" fill="none" stroke="rgba(0,180,216,.3)" strokeWidth="1"/>
+                    <circle cx="80" cy="55" r="5" fill="#00B4D8" opacity=".4"/>
+                    <circle cx="140" cy="60" r="15" fill="none" stroke="rgba(0,180,216,.3)" strokeWidth="1"/>
+                    <circle cx="140" cy="60" r="5" fill="#F59E0B" opacity=".4"/>
+                    <path d="M95 52L125 57" stroke="rgba(255,255,255,.1)" strokeWidth="1" strokeDasharray="4 4"/>
+                  </svg>
+                </div>
+                <h3 className="fd">Water Quality Monitor</h3><p>Multi-parameter testing with cloud alerts.</p>
+                <div className="at fm"><span>pH</span><span>Turbidity</span><span>IoT</span></div>
+              </div>
+
+              {/* Product 7 — Vibration Analyzer */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#1A1A2E,#2D1B38)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <rect x="50" y="30" width="100" height="60" rx="6" fill="rgba(255,255,255,.04)" stroke="rgba(168,85,247,.3)" strokeWidth="1"/>
+                    <path d="M60 60Q70 35 80 55Q90 75 100 50Q110 25 120 55Q130 85 140 60" stroke="#A855F7" strokeWidth="2" fill="none" opacity=".6"/>
+                    <circle cx="60" cy="60" r="3" fill="#A855F7" opacity=".4"/>
+                    <circle cx="140" cy="60" r="3" fill="#10B981" opacity=".4"/>
+                    <rect x="155" y="40" width="25" height="40" rx="4" fill="rgba(255,255,255,.04)" stroke="rgba(168,85,247,.2)" strokeWidth=".8"/>
+                    <rect x="160" y="50" width="6" height="8" rx="1" fill="#A855F7" opacity=".3"/>
+                    <rect x="168" y="46" width="6" height="12" rx="1" fill="#A855F7" opacity=".4"/>
+                  </svg>
+                </div>
+                <h3 className="fd">Vibration Analyzer</h3><p>FFT-based analysis for predictive maintenance.</p>
+                <div className="at fm"><span>FFT</span><span>Edge AI</span><span>Industrial</span></div>
+              </div>
+
+              {/* Product 8 — BLE Asset Tag */}
+              <div className="prd">
+                <div className="prd-img" style={{ background: 'linear-gradient(145deg,#0E1F38,#1A3355)' }}>
+                  <svg viewBox="0 0 200 120" fill="none" style={{ width: '100%', height: '100%', display: 'block' }}>
+                    <circle cx="100" cy="55" r="6" fill="#0066FF" opacity=".5"/>
+                    <circle cx="100" cy="55" r="18" fill="none" stroke="rgba(0,102,255,.2)" strokeWidth="1" strokeDasharray="4 4"/>
+                    <circle cx="100" cy="55" r="32" fill="none" stroke="rgba(0,102,255,.12)" strokeWidth="1" strokeDasharray="4 4"/>
+                    <circle cx="60" cy="40" r="4" fill="#00B4D8" opacity=".4"/>
+                    <circle cx="145" cy="70" r="4" fill="#F59E0B" opacity=".4"/>
+                    <circle cx="80" cy="85" r="4" fill="#10B981" opacity=".4"/>
+                    <path d="M64 40L82 48" stroke="rgba(0,180,216,.2)" strokeWidth="1" strokeDasharray="3 3"/>
+                    <path d="M118 62L141 68" stroke="rgba(245,158,11,.2)" strokeWidth="1" strokeDasharray="3 3"/>
+                    <path d="M84 82L92 72" stroke="rgba(16,185,129,.2)" strokeWidth="1" strokeDasharray="3 3"/>
+                  </svg>
+                </div>
+                <h3 className="fd">BLE Asset Tag</h3><p>Low-power indoor tracking for warehouses.</p>
+                <div className="at fm"><span>BLE 5.0</span><span>Low Power</span><span>Mesh</span></div>
+              </div>
             </div>
             <button className="crl-btn l" onClick={() => slidePR(-1)} aria-label="Previous">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--n700)" strokeWidth="2.5" strokeLinecap="round"><path d="M15 18l-6-6 6-6" /></svg>
