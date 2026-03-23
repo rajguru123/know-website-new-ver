@@ -138,7 +138,7 @@ export default function AboutClient() {
                 <div className="leader-header">
                   <img
                     src={l.img}
-                    alt={`${l.name} — ${l.title} at Knowx Innovations`}
+                    alt={l.name + ' — ' + l.title + ' at Knowx Innovations'}
                     style={{
                       width: 80, height: 80, borderRadius: '50%',
                       objectFit: 'cover', objectPosition: 'top center',
