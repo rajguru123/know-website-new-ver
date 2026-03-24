@@ -26,8 +26,8 @@ export default function Navbar({ onOpenPopup }: { onOpenPopup: () => void }) {
         { href: '#industries', label: 'Industries' },
         { href: '#products', label: 'Products' },
         { href: '#case-studies', label: 'Case Studies' },
-        { href: '#about', label: 'About' },
-        { href: '#contact', label: 'Contact' },
+        { href: 'about', label: 'About' },
+        { href: 'contact', label: 'Contact' },
       ]
     : [
         { href: '/#services', label: 'Services' },
