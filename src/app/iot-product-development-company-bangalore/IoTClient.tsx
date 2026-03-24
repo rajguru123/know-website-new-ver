@@ -87,7 +87,7 @@ export default function IoTClient() {
 
       {/* ═══ 3. PROBLEM → SOLUTION ═══ */}
       <section className="sec rv">
-        <div className="sec-in" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }} className="prob-grid-wrap">
+        <div className="sec-in prob-grid-wrap" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 60, alignItems: 'center' }}>
           <div>
             <div className="fm" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 600, color: '#D97706', background: 'rgba(245,158,11,.08)', padding: '6px 14px', borderRadius: 6, marginBottom: 20, letterSpacing: '.04em' }}>The challenge</div>
             <h2 className="fd" style={{ fontWeight: 700, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--n900)', lineHeight: 1.2, marginBottom: 16 }}>Struggling to turn your IoT idea into a working product?</h2>
