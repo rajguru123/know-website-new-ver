@@ -439,7 +439,7 @@ svg {
 }
 .faq-item.open .faq-q .ico { transform: rotate(45deg); background: var(--ac50); }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
-.faq-item.open .faq-a { max-height: 200px; padding: 0 24px 20px; }
+.faq-item.open .faq-a { max-height: 600px; padding: 0 24px 20px; }
 .faq-a p { font-size: 15px; color: var(--n700); line-height: 1.7; }
 
 /* === CTA SECTION === */
