@@ -316,7 +316,7 @@ export default function IoTClient() {
               { q: 'Can you help with both hardware and software?', a: 'Yes. We provide complete end-to-end IoT product development — from PCB design and embedded firmware to cloud platforms and mobile applications. Everything is developed under one roof by an integrated engineering team.' },
               { q: 'Do you provide post-deployment support?', a: 'Yes. We offer ongoing maintenance, OTA firmware updates, cloud infrastructure management, and scaling support. We can also help with product iterations and feature additions after the initial deployment.' },
             ].map((faq, i) => (
-              <div className={'faq-item rv' + (openFaq === i ? ' open' : '')} key={i}>
+              <div className={'faq-item' + (openFaq === i ? ' open' : '')} key={i}>
                 <div className="faq-q" onClick={() => toggleFaq(i)}>
                   <h3 className="fd">{faq.q}</h3>
                   <div className="ico">+</div>
