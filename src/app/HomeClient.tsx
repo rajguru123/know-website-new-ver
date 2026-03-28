@@ -514,7 +514,7 @@ export default function HomeClient() {
               { q: 'Can startups work with you for product development?', a: 'Absolutely. We help startups design, prototype, and scale embedded and IoT products efficiently — from initial concept to production-ready hardware.' },
               { q: 'Where is your company located?', a: 'We are based in Vijayanagar, Bangalore, India, serving clients across India and globally.' },
             ].map((faq, i) => (
-              <div className={`faq-item rv ${openFaq === i ? 'open' : ''}`} key={i}>
+              <div className={`faq-item ${openFaq === i ? 'open' : ''}`} key={i}>
                 <div className="faq-q" onClick={() => toggleFaq(i)}>
                   <h3 className="fd">{faq.q}</h3>
                   <div className="ico">+</div>
