@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from 'react';
 
@@ -384,7 +383,7 @@ export default function EmbeddedClient() {
               { q: 'What industries benefit from embedded system design services?', a: 'Industries like manufacturing, automotive, healthcare, energy and utilities, and consumer electronics rely heavily on embedded systems for asset tracking, control systems, medical devices, battery management, power systems, and smart connected products.' },
               { q: 'How long does embedded system development take?', a: 'Timelines vary depending on complexity. A simple firmware project may take 4-6 weeks, while a full embedded product with custom hardware, firmware, and system integration can take 3-6 months. We provide a detailed timeline and milestone plan during the requirement analysis phase.' },
             ].map((faq, i) => (
-              <div className={'faq-item rv' + (openFaq === i ? ' open' : '')} key={i}>
+              <div className={'faq-item' + (openFaq === i ? ' open' : '')} key={i}>
                 <div className="faq-q" onClick={() => toggleFaq(i)}>
                   <h3 className="fd">{faq.q}</h3>
                   <div className="ico">+</div>
@@ -423,6 +422,9 @@ export default function EmbeddedClient() {
 
       {/* ═══ COMPLETE RESPONSIVE CSS — ALL BREAKPOINTS ═══ */}
       <style>{`
+        /* FAQ fix — increase max-height for longer answers */
+        .faq-item.open .faq-a { max-height: 600px !important; }
+
         /* Base layout for this page */
         .prob-grid-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
         .emb-hero-visual { display: none; }
@@ -449,8 +451,6 @@ export default function EmbeddedClient() {
           .vals { grid-template-columns: 1fr !important; gap: 16px !important; }
           .sst-in { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; padding: 0 1.25rem !important; }
           .sh h2 { font-size: clamp(1.4rem, 5vw, 1.8rem) !important; }
-          .faq-item { padding: 16px !important; }
-          .faq-q h3 { font-size: 15px !important; }
           .cta-b { padding: 32px 24px !important; }
           .cta-btns { flex-direction: column !important; gap: 12px !important; }
           .cs-img { height: 180px !important; }
@@ -469,8 +469,6 @@ export default function EmbeddedClient() {
           .sst-in { gap: 12px !important; padding: 0 1rem !important; }
           .ssv { font-size: clamp(1.4rem, 6vw, 1.8rem) !important; }
           .sec-in { padding-left: 1rem !important; padding-right: 1rem !important; }
-          .faq-q h3 { font-size: 14px !important; line-height: 1.4 !important; }
-          .faq-a p { font-size: 14px !important; }
           .cta-b { padding: 28px 20px !important; border-radius: 16px !important; }
           .cta-b h2 { font-size: clamp(1.3rem, 5vw, 1.6rem) !important; }
           .cta-ph { font-size: 14px !important; }
